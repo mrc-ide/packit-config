@@ -18,10 +18,10 @@
 
 1. Upgrade Ubuntu from 22.04 to 24.04
     1. SSH into the new VM `ssh vagrant@wpia-packit-dev.dide.ic.ac.uk`
-    1. Run `apt-get dist-upgrade`
-    1. Edit `/etc/update-manager/release-upgrades` and set `Prompt=lts`
+    1. Run `sudo apt-get dist-upgrade`
     1. Reboot the VM
-    1. Run `do-release-upgrade`, say yes to everything except about overwriting the sudoers file
+    1. Edit `/etc/update-manager/release-upgrades` and set `Prompt=lts`
+    1. Run `sudo do-release-upgrade`, say yes to everything except about overwriting the sudoers file
     1. Let the upgrader restart when it is done
 
 1. Run the initial provisioning on the machine
