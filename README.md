@@ -24,10 +24,18 @@ ssh root@packit-dev.dide.ic.ac.uk tar -C /var/lib/outpack/reside-dev -Jc .outpac
 uv run pyinfra src/infra/inventory.py infra.run --limit wpia-packit-dev.dide.ic.ac.uk
 ```
 
+1. Build multipackit proxy image
+```
+docker build -t ghcr.io/mrc-ide/packit-proxy:multipackit https://github.com/mrc-ide/packit-deploy.git#multipackit:proxy
+```
+
 1. Configure and start packit
 ```
 ssh vagrant@wpia-packit-dev.dide.ic.ac.uk
 cd packit-config
-packit configure dev
-packit start --pull
+packit configure packit-dev
+packit start
 ```
+
+First deployement may take a while to get certificates from Let's Encrypt. You
+can monitor progress with `docker logs -f packit-acme-buddy`.

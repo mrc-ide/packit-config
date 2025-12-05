@@ -57,7 +57,7 @@ instances:
         jwt:
           secret: VAULT:secret/packit/jwtsecret/dev:value
 
-      default_roles: ["ADMIN"]
+      default_roles: "ADMIN"
       cors_allowed_origins: "https://reside-dev.packit-dev.dide.ic.ac.uk/"
 
       runner:
