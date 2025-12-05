@@ -53,3 +53,5 @@
 
 First deployement may take a while to get certificates from Let's Encrypt. You
 can monitor progress with `docker logs -f packit-acme-buddy`.
+
+1. Resync packets using the Packit admin UI
