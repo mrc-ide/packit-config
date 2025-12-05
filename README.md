@@ -16,7 +16,7 @@
     1. Leave the Windows host
 
 
-1. 
+1. Upgrade Ubuntu from 22.04 to 24.04
     1. SSH into the new VM `ssh vagrant@wpia-packit-dev.dide.ic.ac.uk`
     1. Run `apt-get dist-upgrade`
     1. Edit `/etc/update-manager/release-upgrades` and set `Prompt=lts`
@@ -51,7 +51,7 @@
     packit start
     ```
 
-First deployement may take a while to get certificates from Let's Encrypt. You
-can monitor progress with `docker logs -f packit-acme-buddy`.
+    First deployement may take a while to get certificates from Let's Encrypt. You
+    can monitor progress with `docker logs -f packit-acme-buddy`.
 
 1. Resync packets using the Packit admin UI
