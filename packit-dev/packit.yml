@@ -78,7 +78,7 @@ proxy:
   port_metrics: 9000
   image:
     name: packit-proxy
-    tag: multipackit
+    tag: main
 
 acme_buddy:
   image:
