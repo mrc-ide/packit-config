@@ -56,10 +56,6 @@ instances:
         default_roles: "ADMIN" # NB Change this after first deploy and creation of USER role
         cors_allowed_origins: "https://priority-pathogens.packit.dide.ic.ac.uk/"
 
-        #runner:
-        #  git:
-        #    url: https://github.com/reside-ic/packit-infra-test-repo.git
-
   reside:
     volumes:
       outpack: packit-outpack-reside
