@@ -1,0 +1,221 @@
+container_prefix: packit
+
+protect_data: true
+
+repo: ghcr.io/mrc-ide
+
+network: packit
+
+volumes:
+  proxy_logs: packit-proxy-logs
+  proxy_tls: packit-proxy-tls
+  orderly_library: packit-orderly-library
+  orderly_logs: packit-orderly-logs
+
+instances:
+  priority-pathogens:
+    volumes:
+      outpack: packit-outpack-priority-pathogens
+      packit_db: packit-db-priority-pathogens
+      packit_db_backup: packit-db-backup-priority-pathogens
+
+    outpack:
+      server:
+        name: outpack_server
+        tag: main
+
+    packit:
+      base_url: https://priority-pathogens.packit.dide.ic.ac.uk/
+      api:
+        name: packit-api
+        tag: main
+      app:
+        name: packit
+        tag: main
+      db:
+        name: packit-db
+        tag: main
+        user: packituser
+        password: changeme
+      auth:
+        enabled: true
+        auth_method: github
+        expiry_days: 7
+        github_api_org: mrc-ide
+        github_api_team: priority-pathogens
+        github_client:
+          id: VAULT:secret/packit/oauth/production:clientId
+          secret: VAULT:secret/packit/oauth/production:clientSecret
+        oauth2:
+          redirect:
+            packit_api_root: "https://priority-pathogens.packit.dide.ic.ac.uk/api"
+            url: "https://priority-pathogens.packit.dide.ic.ac.uk/redirect"
+        jwt:
+          secret: VAULT:secret/packit/jwtsecret/production:value
+
+        default_roles: "ADMIN" # NB Change this after first deploy and creation of USER role
+        cors_allowed_origins: "https://priority-pathogens.packit.dide.ic.ac.uk/"
+
+        #runner:
+        #  git:
+        #    url: https://github.com/reside-ic/packit-infra-test-repo.git
+
+  reside:
+    volumes:
+      outpack: packit-outpack-reside
+      packit_db: packit-db-reside
+      packit_db_backup: packit-db-backup-reside
+
+    outpack:
+      server:
+        name: outpack_server
+        tag: main
+
+    packit:
+      base_url: https://reside.packit.dide.ic.ac.uk/
+      api:
+        name: packit-api
+        tag: main
+      app:
+        name: packit
+        tag: main
+      db:
+        name: packit-db
+        tag: main
+        user: packituser
+        password: changeme
+      auth:
+        enabled: true
+        auth_method: github
+        expiry_days: 7
+        github_api_org: reside-ic
+        github_api_team: "" # blank means anyone in the org
+        github_client:
+          id: VAULT:secret/packit/oauth/production:clientId
+          secret: VAULT:secret/packit/oauth/production:clientSecret
+        oauth2:
+          redirect:
+            packit_api_root: "https://reside.packit.dide.ic.ac.uk/api"
+            url: "https://reside.packit.dide.ic.ac.uk/redirect"
+        jwt:
+          secret: VAULT:secret/packit/jwtsecret/production:value
+
+        default_roles: "ADMIN" # NB Change this after first deploy and creation of USER role
+        cors_allowed_origins: "https://reside.packit.dide.ic.ac.uk/"
+
+        runner:
+          git:
+            url: https://github.com/reside-ic/packit-infra-test-repo.git
+
+  malariaverse-sitefiles:
+    volumes:
+      outpack: packit-outpack-malariaverse-sitefiles
+      packit_db: packit-db-malariaverse-sitefiles
+      packit_db_backup: packit-db-backup-malariaverse-sitefiles
+
+    outpack:
+      server:
+        name: outpack_server
+        tag: main
+
+    packit:
+      base_url: https://malariaverse-sitefiles.packit.dide.ic.ac.uk/
+      api:
+        name: packit-api
+        tag: main
+      app:
+        name: packit
+        tag: main
+      db:
+        name: packit-db
+        tag: main
+        user: packituser
+        password: changeme
+      auth:
+        enabled: true
+        auth_method: github
+        expiry_days: 7
+        github_api_org: malariaverse
+        github_api_team: sitefiles
+        github_client:
+          id: VAULT:secret/packit/oauth/production:clientId
+          secret: VAULT:secret/packit/oauth/production:clientSecret
+        oauth2:
+          redirect:
+            packit_api_root: "https://malariaverse-sitefiles.packit.dide.ic.ac.uk/api"
+            url: "https://malariaverse-sitefiles.packit.dide.ic.ac.uk/redirect"
+        jwt:
+          secret: VAULT:secret/packit/jwtsecret/production:value
+
+        default_roles: "ADMIN" # NB Change this after first deploy and creation of USER role
+        cors_allowed_origins: "https://malariaverse-sitefiles.packit.dide.ic.ac.uk/"
+
+  training:
+    volumes:
+      outpack: packit-outpack-training
+      packit_db: packit-db-training
+      packit_db_backup: packit-db-backup-training
+
+    outpack:
+      server:
+        name: outpack_server
+        tag: main
+
+    packit:
+      base_url: https://training.packit.dide.ic.ac.uk/
+      api:
+        name: packit-api
+        tag: main
+      app:
+        name: packit
+        tag: main
+      db:
+        name: packit-db
+        tag: main
+        user: packituser
+        password: changeme
+      auth:
+        enabled: true
+        auth_method: github
+        expiry_days: 7
+        github_api_org: mrc-ide
+        github_api_team: "" # blank means anyone in the org
+        github_client:
+          id: VAULT:secret/packit/oauth/production:clientId
+          secret: VAULT:secret/packit/oauth/production:clientSecret
+        oauth2:
+          redirect:
+            packit_api_root: "https://training.packit.dide.ic.ac.uk/api"
+            url: "https://training.packit.dide.ic.ac.uk/redirect"
+        jwt:
+          secret: VAULT:secret/packit/jwtsecret/production:value
+
+        default_roles: "ADMIN" # NB Change this after first deploy and creation of USER role
+        cors_allowed_origins: "https://training.packit.dide.ic.ac.uk/"
+
+orderly-runner:
+  image:
+    name: orderly.runner
+    tag: main
+  workers: 2
+
+proxy:
+  enabled: true
+  hostname: packit.dide.ic.ac.uk
+  port_http: 80
+  port_https: 443
+  port_metrics: 9000
+  image:
+    build: ../../proxy
+
+acme_buddy:
+  image:
+    repo: ghcr.io/reside-ic
+    name: acme-buddy
+    tag: main
+  email: reside@imperial.ac.uk
+  dns_provider: hdb
+  env:
+    HDB_ACME_USERNAME: VAULT:secret/certbot-hdb/credentials:username
+    HDB_ACME_PASSWORD: VAULT:secret/certbot-hdb/credentials:password
+  port: 2112
