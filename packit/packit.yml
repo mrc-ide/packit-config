@@ -6,6 +6,11 @@ repo: ghcr.io/mrc-ide
 
 network: packit
 
+vault:
+  addr: https://vault.dide.ic.ac.uk:8200
+  auth:
+    method: github
+
 volumes:
   proxy_logs: packit-proxy-logs
   proxy_tls: packit-proxy-tls
@@ -202,7 +207,8 @@ proxy:
   port_https: 443
   port_metrics: 9000
   image:
-    build: ../../proxy
+    name: packit-proxy
+    tag: main
 
 acme_buddy:
   image:
