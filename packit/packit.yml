@@ -58,8 +58,8 @@ instances:
         jwt:
           secret: VAULT:secret/packit/jwtsecret/production:value
 
-        default_roles: "ADMIN" # NB Change this after first deploy and creation of USER role
-        cors_allowed_origins: "https://priority-pathogens.packit.dide.ic.ac.uk/"
+      default_roles: "USER"
+      cors_allowed_origins: "https://priority-pathogens.packit.dide.ic.ac.uk/"
 
   reside:
     volumes:
@@ -101,12 +101,12 @@ instances:
         jwt:
           secret: VAULT:secret/packit/jwtsecret/production:value
 
-        default_roles: "ADMIN" # NB Change this after first deploy and creation of USER role
-        cors_allowed_origins: "https://reside.packit.dide.ic.ac.uk/"
+      default_roles: "ADMIN"
+      cors_allowed_origins: "https://reside.packit.dide.ic.ac.uk/"
 
-        runner:
-          git:
-            url: https://github.com/reside-ic/packit-infra-test-repo.git
+      runner:
+        git:
+          url: https://github.com/reside-ic/packit-infra-test-repo.git
 
   malariaverse-sitefiles:
     volumes:
@@ -148,8 +148,8 @@ instances:
         jwt:
           secret: VAULT:secret/packit/jwtsecret/production:value
 
-        default_roles: "ADMIN" # NB Change this after first deploy and creation of USER role
-        cors_allowed_origins: "https://malariaverse-sitefiles.packit.dide.ic.ac.uk/"
+      default_roles: "USER"
+      cors_allowed_origins: "https://malariaverse-sitefiles.packit.dide.ic.ac.uk/"
 
   training:
     volumes:
@@ -191,8 +191,9 @@ instances:
         jwt:
           secret: VAULT:secret/packit/jwtsecret/production:value
 
-        default_roles: "ADMIN" # NB Change this after first deploy and creation of USER role
-        cors_allowed_origins: "https://training.packit.dide.ic.ac.uk/"
+      default_roles: "USER"
+      cors_allowed_origins: "https://training.packit.dide.ic.ac.uk/"
+
 
 orderly-runner:
   image:
