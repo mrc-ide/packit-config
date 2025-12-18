@@ -194,6 +194,49 @@ instances:
       default_roles: "USER"
       cors_allowed_origins: "https://training.packit.dide.ic.ac.uk/"
 
+  eppi-vulnerability-index:
+    volumes:
+      outpack: packit-outpack-eppi-vulnerability-index
+      packit_db: packit-db-eppi-vulnerability-index
+      packit_db_backup: packit-db-backup-eppi-vulnerability-index
+
+    outpack:
+      server:
+        name: outpack_server
+        tag: main
+
+    packit:
+      base_url: https://eppi-vulnerability-index.packit.dide.ic.ac.uk/
+      api:
+        name: packit-api
+        tag: main
+      app:
+        name: packit
+        tag: main
+      db:
+        name: packit-db
+        tag: main
+        user: packituser
+        password: changeme
+      auth:
+        enabled: true
+        auth_method: github
+        expiry_days: 7
+        github_api_org: jameel-institute
+        github_api_team: eppi-vulnerability-index
+        github_client:
+          id: VAULT:secret/packit/oauth/production:clientId
+          secret: VAULT:secret/packit/oauth/production:clientSecret
+        oauth2:
+          redirect:
+            packit_api_root: "https://eppi-vulnerability-index.packit.dide.ic.ac.uk/api"
+            url: "https://eppi-vulnerability-index.packit.dide.ic.ac.uk/redirect"
+        jwt:
+          secret: VAULT:secret/packit/jwtsecret/production:value
+
+      default_roles: "USER"
+      cors_allowed_origins: "https://eppi-vulnerability-index.packit.dide.ic.ac.uk/"
+
 
 orderly-runner:
   image:
