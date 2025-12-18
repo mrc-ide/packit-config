@@ -235,7 +235,6 @@ instances:
           secret: VAULT:secret/packit/jwtsecret/production:value
 
       default_roles: "USER"
-      cors_allowed_origins: "https://eppi-vulnerability-index.packit.dide.ic.ac.uk/"
 
 
 orderly-runner:
