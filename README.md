@@ -29,17 +29,9 @@
     uv run pyinfra src/infra/inventory.py infra.run --limit wpia-packit-dev.dide.ic.ac.uk
     ```
 
-1. Build multipackit proxy image on the target machine. This won't be needed
-   once the packit-deploy multipackit branch is merged and published to GHCR.
-
-    ```
-    ssh vagrant@wpia-packit-dev.dide.ic.ac.uk
-    docker build -t ghcr.io/mrc-ide/packit-proxy:multipackit https://github.com/mrc-ide/packit-deploy.git#multipackit:proxy
-    ```
-
 1. Restore your instance data:
     ```
-    cat reside.tar | ssh vagrant@packit-dev.dide.ic.ac.uk docker run --rm -i -v packit-outpack-reside-dev:/outpack alpine tar -C /outpack -x
+    cat reside-dev.tar.xz | ssh vagrant@packit-dev.dide.ic.ac.uk docker run --rm -i -v packit-outpack-reside-dev:/outpack alpine tar -C /outpack -Jx
     ```
 
 1. Configure and start packit
