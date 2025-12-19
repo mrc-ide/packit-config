@@ -225,8 +225,8 @@ instances:
         github_api_org: jameel-institute
         github_api_team: eppi-vulnerability-index
         github_client:
-          id: VAULT:secret/packit/oauth/production:clientId
-          secret: VAULT:secret/packit/oauth/production:clientSecret
+          id: VAULT:secret/packit/oauth/jameel:clientId
+          secret: VAULT:secret/packit/oauth/jameel:clientSecret
         oauth2:
           redirect:
             packit_api_root: "https://eppi-vulnerability-index.packit.dide.ic.ac.uk/api"
